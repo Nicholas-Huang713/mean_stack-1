@@ -167,11 +167,10 @@ function pickUp() {
 
 function mission() {
    characters = [tigger, piglet, pooh, owl, robin, rabbit, gopher, kanga, eeyore, heffalumps];
-   var rand = Math.floor(Math.random() * 10);
-   location = characters[rand]["character"];
-   location.objective = true;
-   console.log("Drop Off Honey at " + location)
-   return location;
+   var rand = Math.floor(Math.random()*Math.floor(characters.length));
+   honeypost = characters[rand];
+   honeypost.objective = true;
+   console.log("Drop Off Honey at " + honeypost.character)
 }
 
 
