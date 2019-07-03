@@ -12,52 +12,61 @@ var pooh = {
    }
 };
 
-var piglet = { character: "Piglet",
+var piglet = { 
+   character: "Piglet",
    greet: function() {
       console.log("Your favorite place");
    }
 };
 
-var bees = { character: "Bees", 
+var bees = { 
+   character: "Bees", 
    greet: function() {
       console.log("Welcome to Bees");
    }   
 };
 
-var owl = { chracter: "Owl", 
+var owl = { 
+   chracter: "Owl", 
    greet: function() {
       console.log("Welcome to Owl");
       }   
 };
 
-var robin = { character: "Christopher Robin", 
+var robin = { 
+   character: "Christopher Robin", 
    greet: function() {
       console.log("Welcome to robin");
    }   
 };
 
-var rabbit = { character: "Rabbit", 
+var rabbit = { 
+   character: "Rabbit", 
    greet: function() {
       console.log("Welcome to Rabbit");
    }   
 };
 
-var gopher = { character: "Gopher", 
+var gopher = { 
+   character: "Gopher", 
    greet: function() {
       console.log("Welcome to Gopher");
    }   
 };
-var kanga = { character: "Kanga", 
+var kanga = { 
+   character: "Kanga", 
    greet: function() {
       console.log("Welcome to Kanga");
    }   
 };
-var eeyore = { character: "Eeyore", 
+var eeyore = { 
+   character: "Eeyore", 
    greet: function() {
       console.log("Welcome to Eeyore");
    }   
 };
-var heffalumps = { character: "Heffalumps",
+var heffalumps = { 
+   character: "Heffalumps",
    greet: function() {
       console.log("Welcome to Heffalumps");
    }   
@@ -129,8 +138,10 @@ heffalumps.west = eeyore;
 
 
 var player = {
-   location: tigger
+   location: tigger,
+   hasHoney: false,
 };
+
 
 function move(dir) { 
    if(player.location[dir] === undefined) {
@@ -142,6 +153,48 @@ function move(dir) {
       player.location.greet();
    }
 }
-   
+
+function pickUp() {
+   if (player.location === bees) {
+      player.hasHoney = true;
+      console.log("You've got honey!, Please deliver honey for me!");
+   }
+   else {
+      player.hasHoney = false;
+      console.log("There is no honey here!");
+   }
+} 
+
+function mission() {
+   characters = [tigger, piglet, pooh, owl, robin, rabbit, gopher, kanga, eeyore, heffalumps];
+   var rand = Math.floor(Math.random() * 10);
+   location = characters[rand]["character"];
+   location.objective = true;
+   console.log("Drop Off Honey at " + location)
+   return location;
+}
+
+
+function drop() {
+   if (player.location.objective === true) {
+      
+      if (player.hasHoney === false) {
+         console.log("You don't have honey yet")
+      }
+      else {
+         console.log("Contratulation, you have successfully delivered honey!")
+         player.hasHoney = false;
+      }
+   }
+   else {
+      console.log("You can't drop honey here")
+   }
+}
+
+console.log("Welcome to Hunred Acre Woods.")
+console.log("Your mission is to pick up honey from Bees then carry it over to whom it needs it")
+console.log("Enjoy!")
+console.log("Winnie the poo is looking for honey! Can you find it?")
+mission();
 
 
